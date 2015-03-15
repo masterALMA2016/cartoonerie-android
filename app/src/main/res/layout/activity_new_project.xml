@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="com.cartoonerie.app.NewProjectActivity">
+
+    <com.iangclifton.android.floatlabel.FloatLabel
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/projectName"
+            android:singleLine="true"
+            android:hint="Project name"/>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6 FPS"
+            android:id="@+id/fps6"
+            android:layout_gravity="center_horizontal"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8 FPS"
+            android:id="@+id/fps8"
+            android:layout_gravity="center_horizontal"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 FPS"
+                android:id="@+id/fps12"
+                android:layout_gravity="center_horizontal"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24 FPS"
+                android:id="@+id/fps"
+                android:layout_gravity="center_horizontal"/>
+    </RadioGroup>
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center"/>
+
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Take a video"
+            android:id="@+id/takeVideo"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Create project"
+            android:id="@+id/createProject"/>
+</LinearLayout>

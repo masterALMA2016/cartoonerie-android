@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:focusable="true"
+                android:clickable="true">
+
+    <!-- icon -->
+    <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="icon"
+            android:src="@drawable/ic_movie_black_48dp"
+            />
+
+    <!-- title -->
+    <TextView
+        android:id="@+id/project_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_dark"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        android:textSize="20dp"
+        android:text="project"
+        android:layout_alignTop="@+id/item_icon"
+        android:layout_toEndOf="@+id/item_icon"
+        android:layout_marginTop="2dp"/>
+
+        <TextView
+                android:id="@+id/project_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/item_icon"
+                android:layout_alignBaseline="@+id/item_icon"
+                android:textColor="@color/text"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="42dp"
+                android:textSize="14dp"
+                android:text="info"
+                />
+
+</RelativeLayout>

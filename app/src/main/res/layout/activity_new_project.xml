@@ -65,6 +65,13 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:text="Open a video"
+            android:id="@+id/openVideo" />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:text="Create project"
             android:id="@+id/createProject"/>
+
 </LinearLayout>

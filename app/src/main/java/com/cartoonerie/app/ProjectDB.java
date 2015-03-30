@@ -24,7 +24,7 @@ public class ProjectDB extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_NAME + " ("
                     + "id integer PRIMARY KEY  AUTOINCREMENT,"
                     + "name TEXTE NOT NULL,"
-                    + "uri TEXTE NOT NULL"
+                    + "videoPath TEXTE NOT NULL"
                     + ");";
 
     public ProjectDB(Context context) {
@@ -48,27 +48,31 @@ public class ProjectDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long insert(Project project) {
+    public Project insert(Project project) {
         ContentValues toInsert = new ContentValues();
         toInsert.put("name", project.getName());
-        toInsert.put("uri", project.getUri());
-        return db.insert(TABLE_NAME, null, toInsert);
+        toInsert.put("videoPath", project.getVideoPath());
+        long id = db.insert(TABLE_NAME, null, toInsert);
+        project.setId(id);
+        return project;
     }
 
     public ArrayList<Project> getProjects() {
         ArrayList<Project> output = new ArrayList<Project>();
-        String[] colonnesARecup = new String[] { "name", "uri" };
+        String[] colonnesARecup = new String[] { "id", "name", "videoPath" };
 
         Cursor cursorResults = db.query(TABLE_NAME, colonnesARecup, null,
                 null, null, null, null, null);
         if (null != cursorResults) {
             if (cursorResults.moveToFirst()) {
                 do {
+                    int id = cursorResults.getColumnIndex("id");
                     int name = cursorResults.getColumnIndex("name");
-                    int uri = cursorResults.getColumnIndex("uri");
+                    int videoPath = cursorResults.getColumnIndex("videoPath");
                     Project p = new Project();
+                    p.setId(cursorResults.getLong(id));
                     p.setName(cursorResults.getString(name));
-                    p.setUri(cursorResults.getString(uri));
+                    p.setVideoPath(cursorResults.getString(videoPath));
                     output.add(p);
                 } while (cursorResults.moveToNext());
             }

@@ -27,16 +27,12 @@ public class ProjectActivity extends Activity {
         Project project = (Project) intent.getSerializableExtra(ProjectsActivity.PROJECT);
         getActionBar().setTitle(project.getName());
 
-        File f = new File(project.getUri());
-
-        Toast.makeText(ProjectActivity.this, f.exists()+"ok", Toast.LENGTH_LONG).show();
-
         VideoView videoView = (VideoView)findViewById(R.id.video_view);
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
         videoView.setKeepScreenOn(true);
-        videoView.setVideoPath(project.getUri());
+        videoView.setVideoPath(project.getVideoPath());
         videoView.start();
     }
 

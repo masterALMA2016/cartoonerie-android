@@ -3,7 +3,10 @@ package com.cartoonerie.app;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 import com.iangclifton.android.floatlabel.FloatLabel;
 
+import java.io.File;
+
 
 public class NewProjectActivity extends Activity {
 
@@ -26,11 +31,14 @@ public class NewProjectActivity extends Activity {
 
     private ProjectDB db;
 
+    private Project project;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        project = new Project();
 
         db = new ProjectDB(this);
 
@@ -64,11 +72,9 @@ public class NewProjectActivity extends Activity {
         createProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Project p = new Project();
                 FloatLabel projectName = (FloatLabel) findViewById(R.id.projectName);
-                p.setName(projectName.getEditText().getText().toString());
-                p.setUri("http://www.google.fr");
-                db.insert(p);
+                project.setName(projectName.getEditText().getText().toString());
+                db.insert(project);
                 Intent intent = new Intent(getApplicationContext(), ProjectsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -81,6 +87,9 @@ public class NewProjectActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
             Uri videoUri = data.getData();
+            File f = new File(videoUri.getPath());
+            project.setUri(videoUri.getPath());
+            Toast.makeText(NewProjectActivity.this, "lol:"+f.getName(), Toast.LENGTH_LONG).show();
             VideoView videoView = (VideoView)findViewById(R.id.video_view);
             MediaController mediaController = new MediaController(this);
             mediaController.setAnchorView(videoView);
@@ -108,5 +117,21 @@ public class NewProjectActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public String getRealPathFromURI(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
 
 }

@@ -57,6 +57,16 @@ public class ProjectDB extends SQLiteOpenHelper {
         return project;
     }
 
+    public void removeProject(Project project) {
+        ArrayList<Project> all = getProjects();
+        clear();
+        for(Project p : all) {
+            if(p.getId() != project.getId()) {
+                insert(p);
+            }
+        }
+    }
+
     public ArrayList<Project> getProjects() {
         ArrayList<Project> output = new ArrayList<Project>();
         String[] colonnesARecup = new String[] { "id", "name", "videoPath" };

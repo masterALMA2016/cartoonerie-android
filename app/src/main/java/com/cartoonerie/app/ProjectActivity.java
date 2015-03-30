@@ -17,6 +17,9 @@ import java.net.URI;
 
 public class ProjectActivity extends Activity {
 
+    private Project project;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +27,7 @@ public class ProjectActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        Project project = (Project) intent.getSerializableExtra(ProjectsActivity.PROJECT);
+        project = (Project) intent.getSerializableExtra(ProjectsActivity.PROJECT);
         getActionBar().setTitle(project.getName());
 
         VideoView videoView = (VideoView)findViewById(R.id.video_view);
@@ -48,6 +51,12 @@ public class ProjectActivity extends Activity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.action_delete:
+                ProjectDB db = new ProjectDB(this);
+                db.removeProject(project);
+                Intent intent = new Intent(getApplicationContext(), ProjectsActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

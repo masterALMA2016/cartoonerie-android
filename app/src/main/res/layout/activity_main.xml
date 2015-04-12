@@ -1,0 +1,409 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/myname"
+    android:clickable="true"
+    android:layout_column="10"
+    android:layout_row="6"
+    android:background="@android:color/background_light">
+
+
+    <AbsoluteLayout
+        android:layout_width="50dp"
+        android:layout_height="fill_parent"
+        android:layout_x="551dp"
+        android:id="@+id/outils">
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/crayon"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="visible"
+            android:layout_above="@+id/gomme"
+            android:layout_alignLeft="@+id/taille"
+            android:layout_alignStart="@+id/taille"
+            android:clickable="true"
+            android:enabled="true"
+            android:focusable="false"
+            android:src="@drawable/crayon"
+            android:layout_gravity="right|top"
+            android:layout_x="5dp"
+            android:layout_y="20dp"
+            android:onClick="utiliserCrayon"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/gomme"
+            android:layout_above="@+id/prendreVideo"
+            android:layout_alignLeft="@+id/crayon"
+            android:layout_alignStart="@+id/crayon"
+            android:visibility="visible"
+            android:src="@drawable/gomme"
+            android:layout_alignTop="@+id/ouvrirVideo"
+            android:layout_gravity="right|center_vertical"
+            android:layout_x="5dp"
+            android:layout_y="70dp"
+            android:onClick="utiliserGomme"
+            android:scaleType="fitCenter"/>
+
+        <SeekBar
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:id="@+id/taille"
+            android:layout_x="-20dp"
+            android:layout_y="200dp"
+            android:rotation="270"
+            android:clickable="true"
+            android:visibility="visible"
+            android:max="100" />
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/couleur"
+            android:layout_below="@+id/gomme"
+            android:layout_alignLeft="@+id/gomme"
+            android:layout_alignStart="@+id/gomme"
+            android:visibility="visible"
+            android:background="@android:color/black"
+            android:layout_x="5dp"
+            android:layout_y="120dp"
+            android:onClick="changerCouleur" />
+
+        <FrameLayout
+            android:layout_width="55dp"
+            android:layout_height="70dp"
+            android:layout_x="5dp"
+            android:layout_y="280dp">
+
+            <view
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                class="com.cartoonerie.app.ViewTailleCrayon"
+                android:id="@+id/view2" />
+        </FrameLayout>
+    </AbsoluteLayout>
+
+    <AbsoluteLayout
+        android:layout_width="550dp"
+        android:layout_height="360dp"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:id="@+id/travail">
+
+        <RelativeLayout
+            android:layout_width="550dp"
+            android:layout_height="360dp"
+            android:background="@drawable/image001"
+            android:id="@+id/imageFond">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque1" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque2" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque3" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque4" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque5" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque6" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque7" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque8" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/calque9" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="550dp"
+            android:layout_height="369dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:visibility="visible"
+            android:id="@+id/layoutDessin"
+            android:layout_toLeftOf="@+id/crayon"
+            android:layout_toStartOf="@+id/crayon">
+
+            <view
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                class="com.cartoonerie.app.CustomView"
+                android:id="@+id/view"
+                android:layout_gravity="center_horizontal|top"
+                android:visibility="visible"
+                android:layout_x="0dp"
+                android:layout_y="0dp"
+                android:background="@android:color/transparent"/>
+        </FrameLayout>
+
+        <HorizontalScrollView
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:id="@+id/mesBoutons"
+            android:layout_x="25dp"
+            android:layout_y="0dp"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:clickable="false">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/dessin"
+                    android:src="@drawable/dessin"
+                    android:onClick="changerAffichageDessin"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/calque"
+                    android:src="@drawable/calque"
+                    android:onClick="changerAffichageCalque"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/film"
+                    android:src="@drawable/film"
+                    android:onClick="afficherImagesFilm"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/precedent"
+                    android:src="@drawable/fleche_gauche"
+                    android:onClick="imagePrecedente"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/suivant"
+                    android:src="@drawable/fleche_droite"
+                    android:onClick="imageSuivante"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/undo"
+                    android:src="@drawable/undo"
+                    android:scaleType="fitCenter"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageButton"
+            android:layout_x="260dp"
+            android:layout_y="340dp"
+            android:src="@drawable/up"
+            android:background="@android:color/transparent"
+            android:onClick="afficherListeImages"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/affciherBoutons"
+            android:layout_x="260dp"
+            android:layout_y="0dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/down"
+            android:onClick="afficherBoutons"
+            android:scaleType="fitCenter"/>
+
+        <HorizontalScrollView
+            android:layout_width="550dp"
+            android:layout_height="70dp"
+            android:id="@+id/maliste"
+            android:layout_below="@+id/prendreVideo"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_x="0dp"
+            android:layout_y="290dp"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/layoutImages"
+                android:measureWithLargestChild="false"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView1"
+                    android:src="@drawable/calque01"
+                    android:clickable="true"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image001"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/calque02"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image002"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/calque03"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image003"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView4"
+                    android:src="@drawable/calque04"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image004"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView5"
+                    android:src="@drawable/calque05"
+                    android:onClick="changerImage"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/image005" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView6"
+                    android:src="@drawable/calque06"
+                    android:onClick="changerImage"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/image006" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView7"
+                    android:src="@drawable/calque07"
+                    android:onClick="changerImage"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/image007" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView8"
+                    android:src="@drawable/calque08"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image008"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView9"
+                    android:src="@drawable/calque09"
+                    android:onClick="changerImage"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/image009" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView10"
+                    android:src="@drawable/calque10"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image010"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView11"
+                    android:src="@drawable/calque11"
+                    android:onClick="changerImage"
+                    android:background="@drawable/image011"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageView12"
+                    android:onClick="changerImage"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/image012" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </AbsoluteLayout>
+
+
+</AbsoluteLayout>

@@ -7,4 +7,18 @@
         <item name="android:actionModeShareDrawable">@drawable/ic_share_white_24dp</item>
     </style>
 
+    <style name="Dialog" parent="android:Theme.Holo.Dialog.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <declare-styleable name="ColorPickerPreference">
+        <attr name="showDialogTitle" format="boolean|reference" />
+        <attr name="showSelectedColorInList" format="boolean|reference" />
+    </declare-styleable>
+    <declare-styleable name="ColorPickerView">
+        <attr name="alphaChannelVisible" format="boolean|reference"/>
+        <attr name="alphaChannelText" format="string|reference" />
+        <attr name="colorPickerSliderColor" format="color|reference" />
+        <attr name="colorPickerBorderColor" format="color|reference" />
+    </declare-styleable>
+
 </resources>

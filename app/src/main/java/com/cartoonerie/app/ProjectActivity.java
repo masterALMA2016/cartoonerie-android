@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
+import com.iangclifton.android.floatlabel.FloatLabel;
 
 import java.io.File;
 import java.net.URI;
@@ -37,6 +40,16 @@ public class ProjectActivity extends Activity {
         videoView.setKeepScreenOn(true);
         videoView.setVideoPath(project.getVideoPath());
         videoView.start();
+
+        Button createProject = (Button)findViewById(R.id.editProject);
+        createProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
     }
 
 

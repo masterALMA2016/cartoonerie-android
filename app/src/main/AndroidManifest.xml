@@ -38,6 +38,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.cartoonerie.app.ProjectsActivity" />
         </activity>
+        <activity
+                android:name="com.cartoonerie.app.MainActivity"
+                android:screenOrientation="landscape">
+            android:parentActivityName="com.cartoonerie.app.ProjectActivity" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.cartoonerie.app.ProjectActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -8,4 +8,30 @@
     <string name="action_delete">Delete</string>
     <string name="title_activity_new_project">New Project</string>
 
+    <string-array name="frequences" textcolor="BLACK">
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="nbPelureOignons">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <string-array name="freqPel">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
 </resources>
